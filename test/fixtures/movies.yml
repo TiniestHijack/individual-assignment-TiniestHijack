@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Title: MyString
+  Year: 1
+  Director: MyString
+  Duration: 1
+  Rating: 9.99
+  Content: MyString
+  NumReviews: 1
+  Country: MyString
+  Gross: 1
+  Budget: 1
+  Actor1: MyString
+  Actor2: MyString
+  Actor3: MyString
+  Genres: MyString
+  Keywords: MyString
+
+two:
+  Title: MyString
+  Year: 1
+  Director: MyString
+  Duration: 1
+  Rating: 9.99
+  Content: MyString
+  NumReviews: 1
+  Country: MyString
+  Gross: 1
+  Budget: 1
+  Actor1: MyString
+  Actor2: MyString
+  Actor3: MyString
+  Genres: MyString
+  Keywords: MyString

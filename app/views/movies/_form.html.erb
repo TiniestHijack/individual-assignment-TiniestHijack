@@ -1,0 +1,92 @@
+<%= form_with(model: movie, local: true) do |form| %>
+  <% if movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+        <% movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :Title %>
+    <%= form.text_field :Title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Year %>
+    <%= form.number_field :Year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Director %>
+    <%= form.text_field :Director %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Duration %>
+    <%= form.number_field :Duration %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Rating %>
+    <%= form.text_field :Rating %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Content %>
+    <%= form.text_field :Content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :NumReviews %>
+    <%= form.number_field :NumReviews %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Country %>
+    <%= form.text_field :Country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Gross %>
+    <%= form.number_field :Gross %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Budget %>
+    <%= form.number_field :Budget %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Actor1 %>
+    <%= form.text_field :Actor1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Actor2 %>
+    <%= form.text_field :Actor2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Actor3 %>
+    <%= form.text_field :Actor3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Genres %>
+    <%= form.text_field :Genres %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Keywords %>
+    <%= form.text_field :Keywords %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
