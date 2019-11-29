@@ -8,8 +8,7 @@ namespace :movies do
 
     p "tables emptied"
 
-    CSV.foreach("lib/assets/movie_metadata.csv", :headers =>false) do |row , i|
-      next if i == 0 #skips the first line in the csv file
+    CSV.foreach("lib/assets/movie_metadata.csv", :headers =>false) do |row |
 
       puts row.inspect #just so that we know the file is being read
 

@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_11_22_145210) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "movies", force: :cascade do |t|
     t.string "Title"
     t.integer "Year"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2019_11_22_145210) do
     t.string "Content"
     t.integer "NumReviews"
     t.string "Country"
-    t.integer "Gross"
-    t.integer "Budget"
+    t.bigint "Gross"
+    t.bigint "Budget"
     t.string "Actor1"
     t.string "Actor2"
     t.string "Actor3"
