@@ -21,6 +21,14 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Used to create stylish web design
+gem 'bootstrap'
+# Used with bootstrap
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+# Use to add search functionality
+gem 'simple_form'
+# also for bootstrap
+gem 'jquery-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
