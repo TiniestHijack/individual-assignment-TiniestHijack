@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_192728) do
+ActiveRecord::Schema.define(version: 2019_12_05_162552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "postcode"
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number"
+    t.string "exp_date"
+    t.string "name_on_card"
+    t.string "organisation"
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_credit_cards_on_customer_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "movies", force: :cascade do |t|
     t.string "Title"
@@ -35,4 +63,42 @@ ActiveRecord::Schema.define(version: 2019_11_29_192728) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.decimal "amount"
+    t.bigint "credit_card_id", null: false
+    t.bigint "customer_id", null: false
+    t.bigint "purchase_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["credit_card_id"], name: "index_payments_on_credit_card_id"
+    t.index ["customer_id"], name: "index_payments_on_customer_id"
+    t.index ["purchase_id"], name: "index_payments_on_purchase_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.string "ownership"
+    t.bigint "customer_id", null: false
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_purchases_on_customer_id"
+    t.index ["movie_id"], name: "index_purchases_on_movie_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "addresses", "customers"
+  add_foreign_key "credit_cards", "customers"
+  add_foreign_key "payments", "credit_cards"
+  add_foreign_key "payments", "customers"
+  add_foreign_key "payments", "purchases"
+  add_foreign_key "purchases", "customers"
+  add_foreign_key "purchases", "movies"
 end

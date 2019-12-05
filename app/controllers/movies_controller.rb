@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
+  skip_before_action :logged_in?
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  #rescue_from ActiceRecord::RecordNotFound, with: :redirect_if_not_found
+  rescue_from ActiveRecord::RecordNotFound,with: :redirect_if_not_found
 
   # GET /movies
   # GET /movies.json

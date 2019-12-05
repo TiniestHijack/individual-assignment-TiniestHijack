@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ownership:</strong>
+  <%= @purchase.ownership %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @purchase.customer.last_name %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @purchase.movie.Title %>
+</p>
+
+<!--<%= link_to 'Edit', edit_purchase_path(@purchase) %> |-->
+<%= link_to 'Back', purchases_path %>

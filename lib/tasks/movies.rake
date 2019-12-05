@@ -5,9 +5,13 @@ namespace :movies do
 
     #drop the old table to avoid problems in importing new values
     Movie.destroy_all
+    Customer.destroy_all
+    Adress.destroy_all
+    CreditCard.destroy_all
 
     p "tables emptied"
 
+    #create movies
     CSV.foreach("lib/assets/movie_metadata.csv", :headers =>false) do |row |
 
       puts row.inspect #just so that we know the file is being read
@@ -32,5 +36,7 @@ namespace :movies do
       )
       end
   end
+
+  p "movies created"
 
 end

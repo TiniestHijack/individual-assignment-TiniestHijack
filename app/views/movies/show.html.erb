@@ -75,5 +75,19 @@
   <%= @movie.Keywords %>
 </p>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
+
+
+<h4>Purchases</h4>
+
+<% @movie.purchases.each do |pur|
+  @customer = Customer.find(pur.customer_id)
+  %>
+  <p>
+    <%=@customer.first_name %> <%=@customer.last_name %>: purchased on <%=pur.created_at %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Rent or Buy', new_payment_path(:purchase_id=> @purchase) %> |
+<%= link_to 'Purchase for Customer', new_purchase_path(:movie_id => @movie) %> |
 <%= link_to 'Back', movies_path %>
