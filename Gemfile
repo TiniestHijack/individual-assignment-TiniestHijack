@@ -29,6 +29,8 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'simple_form'
 # also for bootstrap
 gem 'jquery-rails'
+# used to populate customer databases
+gem 'faker'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -41,7 +43,6 @@ group :development, :test do
   #gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker'
 end
 
 group :production do
