@@ -16,10 +16,13 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @customer = Customer.find(params[:customer_id])
   end
 
   # GET /users/1/edit
   def edit
+    @customer = Customer.find(params[:customer_id])
+    @user = User.find(@customer.user.id)
   end
 
   # POST /users
@@ -70,6 +73,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :customer_id)
     end
 end

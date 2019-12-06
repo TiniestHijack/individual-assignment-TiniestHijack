@@ -31,6 +31,13 @@ gem 'simple_form'
 gem 'jquery-rails'
 # used to populate customer databases
 gem 'faker'
+# for use with security features with session tokens
+gem 'activerecord-session_store'
+# for getting wikipedia content to show pages of movies
+gem 'wikipedia-client'
+# for imdb info importing
+gem 'http'
+gem 'json'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

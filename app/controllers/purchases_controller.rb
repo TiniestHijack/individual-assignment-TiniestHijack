@@ -1,22 +1,26 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :redirect_if_not_found
 
   # GET /purchases
   # GET /purchases.json
   def index
-    @purchases = Purchase.all
+    @customer = Customer.find(params[:customer_id])
+    @purchases = @customer.purchases
   end
 
   # GET /purchases/1
   # GET /purchases/1.json
   def show
+    @customer = Customer.find(@purchase.customer_id)
   end
 
   # GET /purchases/new
   def new
     @purchase = Purchase.new
     @movie = Movie.find(params[:movie_id])
-    @customers = Customer.all
+    @current_user ||= User.find_by(id:session[:user_id])
+    @customer = Customer.find(@current_user.customer_id)
   end
 
   # GET /purchases/1/edit
@@ -30,7 +34,7 @@ class PurchasesController < ApplicationController
 
     respond_to do |format|
       if @purchase.save
-        format.html { redirect_to @purchase, notice: 'Purchase was successfully created.' }
+        format.html { redirect_to new_payment_path(:purchase_id => @purchase), notice: 'Purchase was successfully created.' }
         format.json { render :show, status: :created, location: @purchase }
       else
         format.html { render :new }

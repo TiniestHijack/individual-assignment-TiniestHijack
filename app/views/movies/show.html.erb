@@ -1,93 +1,71 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.Title %>
-</p>
+<div class='container'>
+<h3><%= @movie.Title %></h3>
+</div>
 
-<p>
-  <strong>Year:</strong>
-  <%= @movie.Year %>
-</p>
+<div class="container">
+<ul class="list-inline">
+  <li class="list-inline-item"><strong>Title:</strong>
+  <%= @movie.Title %></li>
+  <li class="list-inline-item"><strong>Year:</strong>
+  <%= @movie.Year %></li>
+  <li class="list-inline-item"><strong>Year:</strong>
+  <%= @movie.Year %></li>
+  <li class="list-inline-item"><strong>Duration:</strong>
+  <%= @movie.Duration %></li>
+  <li class="list-inline-item"><strong>Rating:</strong>
+  <%= @movie.Rating %></li>
+  <li class="list-inline-item"><strong>Content:</strong>
+  <%= @movie.Content %></li>
+  <li class="list-inline-item"><strong>Numreviews:</strong>
+  <%= @movie.NumReviews %></li>
+  <li class="list-inline-item"><strong>Country:</strong>
+  <%= @movie.Country %></li>
+  <li class="list-inline-item"><strong>Gross:</strong>
+  <%= @movie.Gross %></li>
+  <li class="list-inline-item"><strong>Budget:</strong>
+  <%= @movie.Budget %></li>
+  <li class="list-inline-item"><strong>Actor1:</strong>
+  <%= @movie.Actor1 %></li>
+  <li class="list-inline-item"><strong>Actor2:</strong>
+  <%= @movie.Actor2 %></li>
+  <li class="list-inline-item"><strong>Actor3:</strong>
+  <%= @movie.Actor3 %></li>
+  <li class="list-inline-item"><strong>Genres:</strong>
+  <%= @movie.Genres %></li>
+  <li class="list-inline-item"><strong>Keywords:</strong>
+  <%= @movie.Keywords %></li>
+</ul>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.Director %>
-</p>
+<div class="container">
+  <img src=<%= @image %> class="img-thumbnail float-left" style="width:15%;height:15%;"> 
+  <p><%= @page.summary %></p> 
+</div>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @movie.Duration %>
-</p>
+<div class="container">
+<h2>Purchases</h2>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date and Time of Purchase</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @movie.Rating %>
-</p>
+  <tbody>
+    <% @movie.purchases.each do |pur|
+      @customer = Customer.find(pur.customer_id) %>
+      <tr>
+        <td><%=@customer.first_name %></td> 
+        <td><%=@customer.last_name %></td>
+        <td><%=pur.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Content:</strong>
-  <%= @movie.Content %>
-</p>
-
-<p>
-  <strong>Numreviews:</strong>
-  <%= @movie.NumReviews %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @movie.Country %>
-</p>
-
-<p>
-  <strong>Gross:</strong>
-  <%= @movie.Gross %>
-</p>
-
-<p>
-  <strong>Budget:</strong>
-  <%= @movie.Budget %>
-</p>
-
-<p>
-  <strong>Actor1:</strong>
-  <%= @movie.Actor1 %>
-</p>
-
-<p>
-  <strong>Actor2:</strong>
-  <%= @movie.Actor2 %>
-</p>
-
-<p>
-  <strong>Actor3:</strong>
-  <%= @movie.Actor3 %>
-</p>
-
-<p>
-  <strong>Genres:</strong>
-  <%= @movie.Genres %>
-</p>
-
-<p>
-  <strong>Keywords:</strong>
-  <%= @movie.Keywords %>
-</p>
-
-
-
-<h4>Purchases</h4>
-
-<% @movie.purchases.each do |pur|
-  @customer = Customer.find(pur.customer_id)
-  %>
-  <p>
-    <%=@customer.first_name %> <%=@customer.last_name %>: purchased on <%=pur.created_at %>
-  </p>
-
-<% end %>
-
-<%= link_to 'Rent or Buy', new_payment_path(:purchase_id=> @purchase) %> |
-<%= link_to 'Purchase for Customer', new_purchase_path(:movie_id => @movie) %> |
+<%= link_to 'Rent or Buy', new_purchase_path(:movie_id => @movie) %> |
 <%= link_to 'Back', movies_path %>
+</div>

@@ -10,14 +10,22 @@ class PaymentsController < ApplicationController
   # GET /payments/1
   # GET /payments/1.json
   def show
+    @credit_card = CreditCard.find(@payment.credit_card_id)
+    @customer = Customer.find(@payment.customer_id)
+    @purchase = Purchase.find(@payment.purchase_id)
   end
 
   # GET /payments/new
   def new
     @payment = Payment.new
     @purchase = Purchase.find(params[:purchase_id])
-    @customer = Customer.find(@purchase.customer.id)
+    @customer = Customer.find(@purchase.customer_id)
     @credit_cards = @customer.credit_cards
+    if @purchase.ownership == "rent"
+      @amount = 2.00
+    else
+      @amount = 10.00
+    end
   end
 
   # GET /payments/1/edit

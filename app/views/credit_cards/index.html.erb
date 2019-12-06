@@ -32,4 +32,5 @@
 
 <br>
 
-<%= link_to 'New Credit Card', new_credit_card_path %>
+<%= link_to 'New Credit Card', new_credit_card_path(:customer_id => @customer) %>
+<%= link_to 'Back', user_path(:id => @customer.user.id) %>

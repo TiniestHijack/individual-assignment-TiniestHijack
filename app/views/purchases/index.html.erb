@@ -28,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New Purchase', new_purchase_path %>
+<%= link_to 'New Purchase', root_url %> |
+<%= link_to 'Back', user_path(:id => @customer.user.id) %>

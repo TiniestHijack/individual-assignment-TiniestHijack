@@ -4,12 +4,13 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :amount %>
-    <%= f.association :credit_card %>
+    <%= f.hidden_field :amount, :value => @amount %>
+    Price: $<%= @amount %>
+    <%= f.input :credit_card_id, :collection => @credit_cards, :label_method => :number, :value_method => :id, prompt: 'Select the card to use', required: true %>
     <%= f.hidden_field :customer_id, :value => @customer.id %>
-      <%= @customer.first_name %> <%= @customer.last_name %>
+    Customer: <%= @customer.first_name %> <%= @customer.last_name %><br>
     <%= f.hidden_field :purchase_id, :value => @purchase.id %>
-      <%= @purchase.created_at %>
+    Ownership: <%= @purchase.ownership %>
   </div>
 
   <div class="form-actions">

@@ -5,9 +5,10 @@
 
   <div class="form-inputs">
     <%= f.input :ownership, :collection => ["Rent","Buy"], prompt: 'Select a purchase type' %>
-    <%= f.association :customer, :collection =>  @customers, :label_method => :last_name, :value_method => :id, prompt: 'Select a customer' %>
+    <%= f.hidden_field :customer_id, :value => @customer.id %>
+    Customer: <%= @customer.first_name %> <%= @customer.last_name %><br>
     <%= f.hidden_field :movie_id, :value => @movie.id %>
-      <%= @movie.Title %>
+    Movie: <%= @movie.Title %>
   </div>
 
   <div class="form-actions">

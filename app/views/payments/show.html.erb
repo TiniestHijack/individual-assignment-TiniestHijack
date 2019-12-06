@@ -7,18 +7,17 @@
 
 <p>
   <strong>Credit card:</strong>
-  <%= @payment.credit_card_id.organisation %>
+  <%= @credit_card.organisation %>
 </p>
 
 <p>
   <strong>Customer:</strong>
-  <%= @payment.customer_id.last_name %>
+  <%= @customer.last_name %>
 </p>
 
 <p>
   <strong>Purchased Movie:</strong>
-  <%= @payment.purchase_id.movie.Title %> purchased on <%= @payment.purchase.created_at %>
+  <%= @purchase.movie.Title %> purchased on <%= @payment.purchase.created_at %>
 </p>
 
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+<%= link_to 'Back', root_url %>

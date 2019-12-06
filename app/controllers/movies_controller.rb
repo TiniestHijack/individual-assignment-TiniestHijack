@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  skip_before_action :logged_in?
+  skip_before_action :logged_in?, only: [:index, :show]
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound,with: :redirect_if_not_found
 
@@ -12,6 +12,9 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    require 'wikipedia'
+    @page = Wikipedia.find(@movie.Title)
+    @image = @page.image_urls[3]
   end
 
   # GET /movies/new

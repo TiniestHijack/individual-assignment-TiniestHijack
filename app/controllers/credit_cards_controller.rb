@@ -5,22 +5,25 @@ class CreditCardsController < ApplicationController
   # GET /credit_cards
   # GET /credit_cards.json
   def index
-    @credit_cards = CreditCard.all
+    @customer = Customer.find(params[:customer_id])
+    @credit_cards = @customer.credit_cards
   end
 
   # GET /credit_cards/1
   # GET /credit_cards/1.json
   def show
+    @customer = Customer.find(@credit_card.customer_id)
   end
 
   # GET /credit_cards/new
   def new
     @credit_card = CreditCard.new
-    @customers = Customer.all
+    @customer = Customer.find(params[:customer_id])
   end
 
   # GET /credit_cards/1/edit
   def edit
+    @customer = Customer.find(params[:customer_id])
   end
 
   # POST /credit_cards

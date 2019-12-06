@@ -9,7 +9,8 @@
     <%= select_date Date.today, prefix: :exp_date %> "Pick any day of the month" 
     <%= f.input :name_on_card %>
     <%= f.input :organisation, collection: CreditCard.organisations.keys, prompt: 'Select a card type', required: true %>
-    <%= f.association :customer, :collection =>  @customers, :label_method => :last_name, :value_method => :id, prompt: 'Select a customer as owner' %>
+    <%= f.hidden_field :customer_id,  :value => @customer.id %>
+    Customer: <%= @customer.first_name%> <%= @customer.last_name %>
   </div>
 
   <div class="form-actions">

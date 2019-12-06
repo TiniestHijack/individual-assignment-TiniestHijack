@@ -22,8 +22,8 @@
 
 <p>
   <strong>Customer:</strong>
-  <%= @credit_card.customer_id.last_name %>
+  <%= @customer.first_name %> <%= @customer.last_name %>
 </p>
 
-<%= link_to 'Edit', edit_credit_card_path(@credit_card) %> |
-<%= link_to 'Back', credit_cards_path %>
+<%= link_to 'Edit', edit_credit_card_path(:customer_id => @customer) %> |
+<%= link_to 'Back', credit_cards_path(:customer_id => @customer) %>

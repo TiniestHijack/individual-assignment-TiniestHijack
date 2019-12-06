@@ -4,6 +4,7 @@ namespace :customers do
   
 
     #drop the old table to avoid problems in importing new values
+    User.destroy_all
     Payment.destroy_all
     CreditCard.destroy_all
     Address.destroy_all
@@ -12,8 +13,11 @@ namespace :customers do
 
     p "tables emptied"
 
+    #create users with faker passwords and emails
+    
     #create customers, edit number here for increased or decreased random customers
-    500.times do |index |
+    users = User.all
+    50.times do |user |
       Customer.create!(
         first_name:Faker::Name.first_name,
         last_name:Faker::Name.last_name,
@@ -23,6 +27,12 @@ namespace :customers do
     #give each customer an address and credit card
     customers = Customer.all
     customers.each do | customer |
+      #create users with faker passwords and emails
+      User.create!(
+        email: Faker::Internet.free_email(name: :name),
+        password: Faker::Internet.password,
+        customer_id: customer.id
+      )
       Address.create!(
         street:Faker::Address.street_address,
         city:Faker::Address.city,
@@ -71,7 +81,7 @@ namespace :customers do
       )
     end
 
-    p "purchases created without payments attached"
+    p "purchases, users, and payments created"
 
   end
 end

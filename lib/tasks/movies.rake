@@ -5,9 +5,6 @@ namespace :movies do
 
     #drop the old table to avoid problems in importing new values
     Movie.destroy_all
-    Customer.destroy_all
-    Adress.destroy_all
-    CreditCard.destroy_all
 
     p "tables emptied"
 

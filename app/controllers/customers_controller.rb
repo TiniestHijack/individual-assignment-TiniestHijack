@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  rescue_from ActiveRecord::RecordNotFound,with: :redirect_if_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :redirect_if_not_found
 
   # GET /customers
   # GET /customers.json
@@ -29,7 +29,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to new_user_path(:customer_id => @customer), notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
