@@ -26,78 +26,28 @@
 
 <!-- Search Feature -->
 <nav class="navbar navbar-light bg-light">
-  <%= form_tag movies_path, :method => 'get', class: 'form-inline'  do %>
+  <%= form_tag movies_path, :method => 'get', class: 'form-inline' do %>
     <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2', placeholder: 'Search', label: 'Search' %>
     <span class="input-group-btn">
       <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
     </span>
+    <div class="custom-control custom-radio custom-control-inline">
+    <%= label :Title, "Title "%>
+      <%= radio_button_tag :category, "\"Title\"", :checked => true %>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <%= label :Title, "Director "%>
+      <%= radio_button_tag :category, "\"Director\"" %>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <%= label :Title, "Content "%>
+      <%= radio_button_tag :category, "\"Content\"" %>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+    <%= label :Genres, "Genres "%>
+      <%= radio_button_tag :category, "\"Genres\"" %>
+    </div>
   <% end %>
-  <!-- radio buttons -->
-  <!--
-  <% form_tag movies_path, :method => 'get', class: 'form-inline' do %>
-    <%= radio_button_tag :filter, params[:filter], class: "form-check-input", label: 'Title' %> 
-    <%= radio_button_tag :filter, params[:filter], class: "form-check-input", label: 'Title' %> 
-    <%= radio_button_tag  :filter, params[:filter], class: "form-check-input", label: 'Title' %>
-    <%= radio_button_tag :filter, params[:filter], class: "form-check-input", label: 'Title' %> 
-    <%= radio_button_tag :filter, params[:filter], class: "form-check-input", label: 'Title' %> 
-    <%= radio_button_tag :filter, params[:filter], class: "form-check-input", label: 'Title' %>
-    <%= submit_tag 'Choice', class: "form-check-label" %> </p>
-  <% end %>
-  -->
-  <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1">Title</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">Year</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-  <label class="form-check-label" for="inlineRadio3">Director</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-  <label class="form-check-label" for="inlineRadio3">Duration</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-  <label class="form-check-label" for="inlineRadio3">Rating</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-  <label class="form-check-label" for="inlineRadio3">Content</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-  <label class="form-check-label" for="inlineRadio3">Genre</label>
-</div>
-<!--
-<div class="form-check form-check-inline" data-toggle="buttons-radio">
-  <%= radio_button :filter, "Title", :id=>"inlineRadio1", :style=>"display:none;" %>
-  <label for="inlineRadio1" class="form-check-label">Title</label>
-</div>
-<div class="form-check form-check-inline" data-toggle="buttons-radio">
-  <%= radio_button :filter, "Director", :id=>"inlineRadio2", :style=>"display:none;" %>
-  <label for="inlineRadio2" class="form-check-label">Director</label>
-</div>
-<div class="form-check form-check-inline" data-toggle="buttons-radio">
-  <%= radio_button :filter, "Duration", :id=>"inlineRadio3", :style=>"display:none;" %>
-  <label for="inlineRadio1" class="form-check-label">Duration</label>
-</div>
-<div class="form-check form-check-inline" data-toggle="buttons-radio">
-  <%= radio_button :filter, "Rating", :id=>"inlineRadio4", :style=>"display:none;" %>
-  <label for="inlineRadio1" class="form-check-label">Rating</label>
-</div>
-<div class="form-check form-check-inline" data-toggle="buttons-radio">
-  <%= radio_button :filter, "Content", :id=>"inlineRadio5", :style=>"display:none;" %>
-  <label for="inlineRadio1" class="form-check-label">Content</label>
-</div>
-<div class="form-check form-check-inline" data-toggle="buttons-radio">
-  <%= radio_button :filter, "Genre", :id=>"inlineRadio6", :style=>"display:none;" %>
-  <label for="inlineRadio1" class="form-check-label">Genre</label>
-</div>
--->
 </nav>
 
 <!-- Table -->
@@ -145,7 +95,7 @@
         -->
         <td><%= movie.Genres %></td>
         <!--<td><%= movie.Keywords %></td>-->
-        <td><%= link_to 'Show', movie %></td>
+        <td class="show"><%= link_to 'Show', movie %></td>
         <!--
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
         <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>

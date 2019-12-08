@@ -38,6 +38,8 @@ gem 'wikipedia-client'
 # for imdb info importing
 gem 'http'
 gem 'json'
+# for enivronment variable to secure API key
+gem 'figaro'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -66,12 +68,19 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 group :test do
+  gem 'cucumber-rails', :require=>false
+  gem 'database_cleaner'
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'factory_bot'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

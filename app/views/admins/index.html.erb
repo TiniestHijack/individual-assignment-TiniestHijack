@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+<h1>Admin Page</h1>
+</div>
+
+<div class="container">
+<h1>Purchases</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Ownership</th>
+      <th>Customer</th>
+      <th>Movie</th>
+      <th>Amount</th>
+      <th>Credit card</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= payment.purchase.ownership %></td>
+        <td><%= payment.customer.first_name %> 
+          <%= payment.customer.last_name %></td>
+        <td><%= payment.purchase.movie.Title %></td>
+        <td>$<%= payment.amount %>0</td>
+        <td><%= payment.credit_card.organisation %> |
+          <%= payment.credit_card.number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

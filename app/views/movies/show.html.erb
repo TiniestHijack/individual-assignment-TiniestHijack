@@ -1,11 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <div class='container'>
-<h3><%= @movie.Title %></h3>
+  <h3 style="text-align:center;"><%= @movie.Title %></h3>
+  <p style="text-align:center;"><%= @plot %></p> 
+  <img src=<%= @image %> class="rounded mx-auto d-block" style="width:15%;height:15%;"> 
 </div>
 
+<br>
+
 <div class="container">
-<ul class="list-inline">
+<ul class="list-inline" style="text-align:center;">
   <li class="list-inline-item"><strong>Title:</strong>
   <%= @movie.Title %></li>
   <li class="list-inline-item"><strong>Year:</strong>
@@ -37,11 +41,9 @@
   <li class="list-inline-item"><strong>Keywords:</strong>
   <%= @movie.Keywords %></li>
 </ul>
-
-<div class="container">
-  <img src=<%= @image %> class="img-thumbnail float-left" style="width:15%;height:15%;"> 
-  <p><%= @page.summary %></p> 
 </div>
+
+<br>
 
 <div class="container">
 <h2>Purchases</h2>
@@ -69,3 +71,11 @@
 <%= link_to 'Rent or Buy', new_purchase_path(:movie_id => @movie) %> |
 <%= link_to 'Back', movies_path %>
 </div>
+
+<!-- for wikipedia implementation that does not work perfectly 
+<div class='container'>
+  <h3 style="text-align:center;"><%= @movie.Title %></h3>
+  <p style="text-align:center;"><%= @page %></p> 
+  <img src=<%= @image %> class="rounded mx-auto d-block" style="width:15%;height:15%;"> 
+</div>
+-->

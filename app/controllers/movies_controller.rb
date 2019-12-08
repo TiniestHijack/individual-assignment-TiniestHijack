@@ -6,15 +6,17 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.search(params[:term])
+    @movies = Movie.search(params[:term], params[:category])
   end
 
   # GET /movies/1
   # GET /movies/1.json
   def show
-    require 'wikipedia'
-    @page = Wikipedia.find(@movie.Title)
-    @image = @page.image_urls[3]
+    #require 'wikipedia'
+    #@page = Wikipedia.find(@movie.Title)
+    #@image = @page.image_urls[3]
+    @plot = Movie.get_plot_by_title(@movie.Title)
+    @image = Movie.get_image_by_title(@movie.Title)
   end
 
   # GET /movies/new
@@ -74,6 +76,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:Title, :Year, :Director, :Duration, :Rating, :Content, :NumReviews, :Country, :Gross, :Budget, :Actor1, :Actor2, :Actor3, :Genres, :Keywords, :term, :filter)
+      params.require(:movie).permit(:Title, :Year, :Director, :Duration, :Rating, :Content, :NumReviews, :Country, :Gross, :Budget, :Actor1, :Actor2, :Actor3, :Genres, :Keywords, :term, :category)
     end
 end

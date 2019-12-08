@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  skip_before_action :logged_in?, only: [:new, :show]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :redirect_if_not_found
 
