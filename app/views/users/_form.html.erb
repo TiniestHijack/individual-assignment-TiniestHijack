@@ -5,8 +5,8 @@
 
   <div class="form-inputs">
     <%= f.input :email, placeholder: 'user@domain.com' %>
-    <%= f.input :password, hint: false, error_html: { id: 'password_error'} %>
-    <%= f.input :password_confirmation %>
+    <%= f.input :password, error_html: { id: 'password_error'} %>
+    <%= f.input :password_confirmation, label: "Confirmation" %>
     <%= f.hidden_field :customer_id, :value => @customer.id %>
       Customer: <%= @customer.first_name %> <%= @customer.last_name %>
   </div>

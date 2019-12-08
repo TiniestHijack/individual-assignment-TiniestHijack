@@ -6,7 +6,7 @@
   <div class="form-inputs">
     <%= f.input :number %>
     <%= f.label :exp_date %><br>
-    <%= select_date Date.today, prefix: :exp_date %> "Pick any day of the month" 
+    <%= f.date_select :exp_date %> "Pick any day of the month" 
     <%= f.input :name_on_card %>
     <%= f.input :organisation, collection: CreditCard.organisations.keys, prompt: 'Select a card type', required: true %>
     <%= f.hidden_field :customer_id,  :value => @customer.id %>
