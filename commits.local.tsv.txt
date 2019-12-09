@@ -1,3 +1,13 @@
+6650691	TiniestHijack	Sun Dec 8 23:28:42 2019	added tests
+c683aa4	TiniestHijack	Sun Dec 8 17:53:38 2019	added admin functionality
+ff61d19	TiniestHijack	Fri Dec 6 22:51:52 2019	added user purchasing
+4941f7e	TiniestHijack	Thu Dec 5 17:52:32 2019	added faker to production branch
+298430d	TiniestHijack	Thu Dec 5 17:46:18 2019	added users
+0de131f	TiniestHijack	Tue Dec 3 18:17:17 2019	added search bar and working on filter with radio buttons
+9f35ce3	TiniestHijack	Fri Nov 29 19:30:42 2019	tried to change columns to bigint
+4fa7329	TiniestHijack	Fri Nov 29 19:13:53 2019	modified csv and will now try to seed to heroku
+d4390d6	TiniestHijack	Wed Nov 27 17:03:39 2019	have table seeded, about to push to heroku
+e358a97	TiniestHijack	Fri Nov 22 20:54:43 2019	created migration for csv
 29400ee	Bruce Scharlau	Fri Sep 6 14:25:46 2019	Update README.md
 5086b65	Bruce Scharlau	Fri Sep 6 14:24:53 2019	Update README.md
 727ea3e	Bruce Scharlau	Fri Sep 6 14:20:09 2019	Initial commit

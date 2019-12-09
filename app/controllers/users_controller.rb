@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   skip_before_action :logged_in?
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound,with: :redirect_if_not_found
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    @customer = Customer.find(params[:customer_id])
   end
 
   # GET /users/1
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_url, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

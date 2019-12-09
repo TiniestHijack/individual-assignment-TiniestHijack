@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound,with: :redirect_if_not_found
 
   # GET /payments
   # GET /payments.json
@@ -19,7 +20,7 @@ class PaymentsController < ApplicationController
   def new
     @payment = Payment.new
     @purchase = Purchase.find(params[:purchase_id])
-    @customer = Customer.find(@purchase.customer_id)
+    @customer = Customer.find(@purchase.customer.id)
     @credit_cards = @customer.credit_cards
     if @purchase.ownership == "rent"
       @amount = 2.00

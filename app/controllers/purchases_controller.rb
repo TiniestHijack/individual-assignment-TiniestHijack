@@ -19,8 +19,8 @@ class PurchasesController < ApplicationController
   def new
     @purchase = Purchase.new
     @movie = Movie.find(params[:movie_id])
-    @current_user ||= User.find_by(id:session[:user_id])
-    @customer = Customer.find(@current_user.customer_id)
+    @user ||= User.find_by(id:session[:user_id])
+    @customer = Customer.find(@user.customer.id)
   end
 
   # GET /purchases/1/edit

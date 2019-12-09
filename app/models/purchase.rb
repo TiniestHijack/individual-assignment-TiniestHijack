@@ -2,7 +2,7 @@ class Purchase < ApplicationRecord
   belongs_to :customer
   belongs_to :movie
   has_one :payment
-  validates :ownership, presence: true
+  validates :ownership, :customer_id, :movie_id, presence: true
 
   def self.search(term, category)
     if term
